@@ -14,8 +14,8 @@
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
 <script src="ds-bundle.js"></script>
 <script src="./image-slot.js"></script>
-<script src="./vet-content.js?v=2"></script>
-<script src="./vet-content-ru.js?v=2"></script>
+<script src="./vet-content.js?v=3"></script>
+<script src="./vet-content-ru.js?v=3"></script>
 <style>body{margin:0;background:var(--color-bg)}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}@keyframes vp-ring{0%,12%,100%{transform:rotate(0)}2%,6%{transform:rotate(-10deg)}4%,8%{transform:rotate(10deg)}10%{transform:rotate(0)}}@keyframes vp-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){[style*="vp-marquee"]{animation:none!important}.vp-ring{animation:none!important}}</style>
 </helmet>
 <div style="min-height:100vh;display:flex;flex-direction:column">
@@ -446,7 +446,7 @@ class Component extends DCLogic {
     const art = articles.find(a => a.id === sub) || articles[0];
     const gallery = C.gallery.map(g => ({ src: g.src, caption: g[L] }));
     const priceFmt = (n) => n.toLocaleString(L === "sr" ? "de-DE" : L === "ru" ? "ru-RU" : "en-US");
-    const priceGroups = C.prices.map((p, i) => {
+    const priceGroups = (C.prices || []).map((p, i) => {
       const s = services.find(x => x.id === p.id);
       return {
         id: p.id, name: s.name, icon: s.icon, href: "#/usluge/" + p.id, open: this.go("usluge/" + p.id),
