@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<title>Vet Princess – Veterinarska ambulanta, Dorćol, Beograd</title>
+<meta name="description" content="Veterinarska ambulanta Vet Princess, Bulevar despota Stefana 61, Beograd. Psi i mačke. Svakog dana 08–21. Tel. 063 639 521.">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+<script src="ds-bundle.js"></script>
+<script src="./image-slot.js"></script>
+<script src="./vet-content.js?v=2"></script>
+<script src="./vet-content-ru.js?v=2"></script>
+<style>body{margin:0;background:var(--color-bg)}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}@keyframes vp-ring{0%,12%,100%{transform:rotate(0)}2%,6%{transform:rotate(-10deg)}4%,8%{transform:rotate(10deg)}10%{transform:rotate(0)}}@keyframes vp-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){[style*="vp-marquee"]{animation:none!important}.vp-ring{animation:none!important}}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+  <div style="background:var(--color-accent-2-100);color:var(--color-accent-2-800)">
+    <div style="max-width:1600px;margin:0 auto;padding:8px clamp(16px,5vw,72px);display:flex;gap:12px;align-items:center;justify-content:space-between;font-size:14px">
+      <a href="{{ c.tel2 }}" aria-label="{{ t.topEmergency }} {{ c.phone2 }}" style="display:flex;align-items:center;gap:8px;color:var(--color-accent-2-800);text-decoration:none;white-space:nowrap;min-width:0" style-hover="color:var(--color-accent-2-900)"><span style="width:28px;height:28px;flex:none;border-radius:999px;background:var(--color-accent-2-700);display:grid;place-items:center;color:var(--color-bg)"><i class="ph-duotone ph-first-aid" style="font-size:16px"></i></span><span style="display:flex;flex-wrap:wrap;column-gap:6px;align-items:baseline;line-height:1.2"><span>{{ t.topEmergency }}</span><span style="font-weight:700">{{ c.phone2 }}</span></span></a>
+      <div role="group" aria-label="Jezik" style="flex:none;display:flex;gap:2px;padding:3px;border-radius:999px;background:var(--color-bg);box-shadow:var(--shadow-sm)">
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3"><button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.label }}</button></sc-for>
+      </div>
+    </div>
+  </div>
+
+  <nav class="nav" style="max-width:1600px;width:100%;margin:0 auto;padding:20px clamp(20px,5vw,72px);flex-wrap:wrap;gap:12px 24px">
+    <a href="#/" onClick="{{ goHome }}" class="nav-brand" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--color-text)">
+      <span style="display:flex;align-items:center;gap:2px"><i class="ph-duotone ph-dog" style="font-size:30px"></i><i class="ph-duotone ph-first-aid" style="font-size:24px;color:var(--color-accent-2)"></i><i class="ph-duotone ph-cat" style="font-size:30px"></i></span>
+      <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase">Vet</span><span style="font-size:28px;font-style:italic;font-weight:400;line-height:1">Princess</span></span>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <sc-for list="{{ navTop }}" as="n" hint-placeholder-count="6"><a href="{{ n.href }}" onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</a></sc-for>
+    </sc-if>
+    <a class="btn btn-primary" href="{{ c.tel1 }}" aria-label="{{ t.callLong }}" style="color:var(--color-bg);font-size:16px;padding:10px 20px;border-radius:999px;white-space:nowrap;gap:8px">{{ ringIcon }}{{ t.call }}</a>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button type="button" class="btn btn-secondary btn-icon" onClick="{{ toggleMenu }}" aria-label="Menu"><i class="ph-duotone ph-list" style="font-size:22px"></i></button>
+    </sc-if>
+    <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+      <div style="flex-basis:100%;display:flex;flex-direction:column;gap:14px;padding:12px 0 8px">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7"><a href="{{ n.href }}" onClick="{{ n.onClick }}" style="font-size:20px;color:var(--color-text)">{{ n.label }}</a></sc-for>
+      </div>
+    </sc-if>
+  </nav>
+
+  <main style="flex:1">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1600px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;align-items:stretch;gap:24px 40px">
+        <div style="flex:1 1 440px;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(14px,2vw,28px);padding:clamp(8px,2vw,24px) 0">
+          <h1 style="margin:0;font-size:clamp(34px,6.4vw,84px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.heroA }} <em style="font-weight:400">{{ t.heroB }}</em></h1>
+          <p style="margin:0;font-size:clamp(16px,1.6vw,20px);line-height:1.55;max-width:44ch;color:var(--color-neutral-800)">{{ t.heroSub }}</p>
+          <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;max-width:520px">
+            <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="3">
+              <div style="{{ tr.style }}"><i class="ph-duotone {{ tr.icon }}" style="font-size:40px;color:var(--color-accent)"></i><span style="font-size:15px;line-height:1.35;color:var(--color-neutral-800)">{{ tr.label }}</span></div>
+            </sc-for>
+          </div></sc-if>
+        </div>
+        <div style="flex:1 1 420px;aspect-ratio:566/650;max-width:520px;margin-left:auto;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 92%,transparent 100%),linear-gradient(to bottom,#000 85%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 92%,transparent 100%),linear-gradient(to bottom,#000 85%,transparent 100%);mask-composite:intersect">
+          <image-slot id="home-hero-pets" shape="rect" fit="cover" src="hero-pacijent.png" placeholder="Prevucite fotografiju: pas i mačka"></image-slot>
+        </div>
+        <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div style="flex-basis:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-bottom:24px">
+            <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="3">
+              <div style="{{ tr.style }}"><i class="ph-duotone {{ tr.icon }}" style="font-size:40px;color:var(--color-accent)"></i><span style="font-size:15px;line-height:1.35;color:var(--color-neutral-800)">{{ tr.label }}</span></div>
+            </sc-for>
+          </div></sc-if>
+      </section>
+      <section id="home-usluge" style="background:var(--color-accent-100);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:32px;position:relative">
+        <div style="max-width:1600px;margin:0 auto;padding:56px clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:32px">
+          <div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between"><h2 style="margin:0;font-size:clamp(34px,4vw,44px)">{{ t.servicesTitle }}</h2></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:40px 24px">
+          <sc-for list="{{ homeServices }}" as="s" hint-placeholder-count="5">
+            <a href="{{ s.href }}" onClick="{{ s.open }}" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;text-decoration:none;color:var(--color-text)">
+              <span style="width:80px;height:80px;border-radius:50%;background:var(--color-bg);display:grid;place-items:center;box-shadow:var(--shadow-sm)"><i class="ph-duotone {{ s.icon }}" style="font-size:38px;color:var(--color-accent-700)"></i></span>
+              <span style="font-size:22px;font-weight:600;line-height:1.3">{{ s.name }}</span>
+            </a>
+          </sc-for>
+          </div>
+          <a class="btn btn-primary" href="#/usluge" onClick="{{ goServices }}" style="align-self:center;color:var(--color-bg);font-size:17px;padding:14px 28px;border-radius:999px;white-space:nowrap">{{ t.allServices }} →</a>
+        </div>
+      </section>
+
+      <section id="home-cenovnik" style="background:var(--color-bg);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:-40px;position:relative">
+        <div style="max-width:1600px;margin:0 auto;padding:72px clamp(20px,5vw,72px) 80px;display:flex;flex-direction:column;gap:32px">
+          <div style="display:flex;flex-direction:column;gap:12px;max-width:640px"><h2 style="margin:0;font-size:clamp(34px,4vw,44px)">{{ t.homePrices }}</h2></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+            <sc-for list="{{ homePriceGroups }}" as="g" hint-placeholder-count="6">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:26px;border-radius:24px;background:var(--color-accent-100)">
+                <span style="display:flex;align-items:center;gap:12px"><span style="width:48px;height:48px;border-radius:50%;background:var(--color-bg);display:grid;place-items:center;flex:none"><i class="ph-duotone {{ g.icon }}" style="font-size:26px;color:var(--color-accent-700)"></i></span><span style="font-size:21px;font-weight:600;line-height:1.2">{{ g.name }}</span></span>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+                    <span style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;font-size:16px;line-height:1.4"><span>{{ r.name }}</span><span style="font-weight:600;color:var(--color-accent-700);white-space:nowrap">{{ r.price }}</span></span>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <a class="btn btn-primary" href="#/cenovnik" onClick="{{ goPrices }}" style="align-self:center;color:var(--color-bg);font-size:17px;padding:14px 28px;border-radius:999px;white-space:nowrap">{{ t.allPrices }} →</a>
+        </div>
+      </section>
+
+      <section id="home-tim" style="background:var(--color-accent-100);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:-40px;position:relative;padding:72px max(clamp(20px,5vw,72px), calc((100% - 1600px) / 2 + clamp(20px,5vw,72px))) 80px;display:flex;flex-direction:column;gap:32px">
+        <div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between"><div style="display:flex;flex-direction:column;gap:12px;max-width:640px"><h2 style="margin:0;font-size:clamp(34px,4vw,44px)">{{ t.homeTeamTitle }}</h2></div><a class="btn btn-primary" href="#/tim" onClick="{{ goTeam }}" style="color:var(--color-bg);font-size:15px;padding:10px 20px;border-radius:999px;white-space:nowrap">{{ t.aboutUs }} →</a></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 56px">
+          <sc-for list="{{ teamPreview }}" as="m" hint-placeholder-count="2">
+            <a href="#/tim" onClick="{{ goTeam }}" style="display:flex;gap:24px;align-items:stretch;text-decoration:none;color:var(--color-text)">
+              <figure style="margin:0;flex:none;width:clamp(120px,15vw,180px);overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="height:100%;min-height:160px"><image-slot id="team-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
+              <div style="display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:4px 0">
+                <span style="font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">{{ m.title }}</span>
+                <span style="font-size:clamp(21px,2vw,27px);font-weight:600;line-height:1.15">{{ m.name }}</span>
+                <p style="margin:6px 0 0;font-size:16px;line-height:1.5;color:var(--color-neutral-800);max-width:42ch">{{ m.line }}</p>
+                <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+                  <sc-for list="{{ m.stats }}" as="st" hint-placeholder-count="2"><span style="display:flex;gap:8px;align-items:center;font-size:16px;color:var(--color-neutral-800)"><i class="ph-duotone ph-paw-print" style="font-size:18px;color:var(--color-accent);flex:none"></i>{{ st }}</span></sc-for>
+                </div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section id="home-pacijenti" style="background:var(--color-bg);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:-40px;position:relative;padding:72px max(clamp(20px,5vw,72px), calc((100% - 1600px) / 2 + clamp(20px,5vw,72px))) 80px;display:flex;flex-direction:column;gap:32px">
+        <div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between"><div style="display:flex;flex-direction:column;gap:12px;max-width:640px"><h2 style="margin:0;font-size:clamp(34px,4vw,44px)">{{ t.homePatientsTitle }}</h2></div><a class="btn btn-primary" href="#/pacijenti" onClick="{{ goGallery }}" style="color:var(--color-bg);font-size:15px;padding:10px 20px;border-radius:999px;white-space:nowrap">{{ t.allPatients }} →</a></div>
+        <div style="position:relative">
+          <div ref="{{ sliderRef }}" style="overflow:hidden;border-radius:var(--radius-md)">
+            <div style="{{ trackStyle }}">
+              <sc-for list="{{ slides }}" as="g" hint-placeholder-count="4">
+                <div role="img" aria-label="{{ t.patientsTitle }}" style="{{ g.style }}"></div>
+              </sc-for>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-icon" onClick="{{ slidePrev }}" aria-label="Prethodna" style="position:absolute;left:{{ arrowInset }};top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:999px;background:var(--color-bg);box-shadow:var(--shadow-md)"><i class="ph-duotone ph-caret-left" style="font-size:22px"></i></button>
+          <button type="button" class="btn btn-secondary btn-icon" onClick="{{ slideNext }}" aria-label="Sledeća" style="position:absolute;right:{{ arrowInset }};top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:999px;background:var(--color-bg);box-shadow:var(--shadow-md)"><i class="ph-duotone ph-caret-right" style="font-size:22px"></i></button>
+        </div>
+      </section>
+
+      
+      <section id="home-blog" style="background:var(--color-accent-100);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:-40px;position:relative;padding:72px max(clamp(20px,5vw,72px), calc((100% - 1600px) / 2 + clamp(20px,5vw,72px))) 80px;display:flex;flex-direction:column;gap:32px">
+        <h2 style="margin:0;font-size:clamp(34px,4vw,44px)">{{ t.blogTitle }}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px">
+          <sc-for list="{{ articles }}" as="a" hint-placeholder-count="3">
+            <a href="{{ a.href }}" onClick="{{ a.open }}" style="display:flex;flex-direction:column;gap:14px;height:100%;text-decoration:none;color:var(--color-text)">
+              <span style="display:block;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><span style="display:block;aspect-ratio:16/10"><image-slot id="home-blog-{{ a.id }}" shape="rect" fit="cover" src="{{ a.img }}" placeholder="Fotografija"></image-slot></span></span>
+              <span style="font-size:24px;font-weight:600;line-height:1.25;min-height:2.5em">{{ a.title }}</span>
+              <span style="flex:1;font-size:17px;line-height:1.55;color:var(--color-neutral-800)">{{ a.lead }}</span>
+              <span class="btn btn-primary" style="align-self:flex-start;color:var(--color-bg);font-size:15px;padding:10px 20px;border-radius:999px;white-space:nowrap">{{ t.read }} →</span>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section id="home-faq" style="background:var(--color-bg);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:-40px;position:relative;padding:72px max(clamp(20px,5vw,72px), calc((100% - 1600px) / 2 + clamp(20px,5vw,72px))) 80px;display:flex;flex-wrap:wrap;gap:40px 72px;align-items:flex-start">
+        <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font-size:clamp(34px,4vw,44px);letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.faqTitle }}</h2>
+          <a class="btn btn-primary" href="{{ c.tel1 }}" style="align-self:flex-start;color:var(--color-bg);font-size:16px;padding:12px 22px;border-radius:999px;white-space:nowrap"><i class="ph-duotone ph-phone-call" style="font-size:18px;transform-origin:50% 72%;animation:vp-ring 2.6s ease-in-out infinite"></i>{{ t.call }}</a>
+        </div>
+        <div style="flex:2 1 460px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ faqItems }}" as="q" hint-placeholder-count="6">
+            <div style="{{ q.boxStyle }}">
+              <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="all:unset;box-sizing:border-box;width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;font-size:19px;font-weight:600;line-height:1.35"><span>{{ q.q }}</span><span style="{{ q.iconWrap }}"><span style="font-size:24px;font-weight:400;line-height:1;margin-top:-2px">{{ q.sign }}</span></span></button>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 24px 22px;font-size:17px;line-height:1.6;color:var(--color-neutral-800);max-width:62ch">{{ q.a }}</p></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1600px;margin:0 auto;padding:32px clamp(20px,5vw,72px) 64px;display:flex;flex-direction:column;gap:16px">
+        <h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.servicesTitle }}</h1>
+        <p style="margin:0;font-size:19px;line-height:1.6;max-width:60ch;color:var(--color-neutral-800)">{{ t.servicesLead }}</p>
+      </section>
+      <sc-for list="{{ serviceRows }}" as="s" hint-placeholder-count="3">
+        <section id="{{ s.anchor }}" style="{{ s.bandStyle }}">
+          <div style="{{ s.rowStyle }}">
+            <div style="flex:1 1 380px;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/3">
+              <div role="img" aria-label="{{ s.name }}" style="{{ s.imgStyle }}" style-hover="transform:scale(1.05)"></div>
+            </div>
+            <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:18px">
+              <span style="width:64px;height:64px;border-radius:50%;background:var(--color-bg);display:grid;place-items:center;box-shadow:var(--shadow-sm)"><i class="ph-duotone {{ s.icon }}" style="font-size:32px;color:var(--color-accent-700)"></i></span>
+              <h2 style="margin:0;font-size:clamp(30px,3.5vw,40px);line-height:1.15">{{ s.name }}</h2>
+              <p style="margin:0;font-size:18px;line-height:1.6;color:var(--color-neutral-800);max-width:56ch">{{ s.intro }}</p>
+              <div style="columns:2 220px;column-gap:24px;margin-top:4px">
+                <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4"><span style="display:flex;gap:10px;align-items:baseline;font-size:17px;line-height:1.45;break-inside:avoid;margin-bottom:10px"><i class="ph-duotone ph-check-circle" style="font-size:18px;color:var(--color-accent);flex:none;transform:translateY(3px)"></i>{{ it }}</span></sc-for>
+              </div>
+              <a class="btn btn-primary" href="{{ c.tel1 }}" style="align-self:flex-start;margin-top:12px;color:var(--color-bg);font-size:17px;padding:14px 26px;border-radius:999px;white-space:nowrap"><i class="ph-duotone ph-phone-call" style="font-size:20px;transform-origin:50% 72%;animation:vp-ring 2.6s ease-in-out infinite"></i>{{ s.cta }}</a>
+            </div>
+          </div>
+        </section>
+      </sc-for>
+    </sc-if>
+
+    <sc-if value="{{ isService }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1600px;margin:0 auto;padding:40px clamp(20px,5vw,72px) 72px;display:flex;flex-direction:column;gap:40px">
+        <a href="#/usluge" onClick="{{ goServices }}" style="font-size:16px">← {{ t.servicesTitle }}</a>
+        <div style="display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start">
+          <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:24px">
+            <i class="ph-duotone {{ svc.icon }}" style="font-size:48px;color:var(--color-accent)"></i>
+            <h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ svc.name }}</h1>
+            <p style="margin:0;font-size:19px;line-height:1.6;color:var(--color-neutral-800)">{{ svc.intro }}</p>
+            <h2 style="margin:16px 0 0;font-size:24px">{{ t.included }}</h2>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <sc-for list="{{ svc.items }}" as="it" hint-placeholder-count="4"><span style="display:flex;gap:12px;align-items:baseline;font-size:19px;line-height:1.45"><i class="ph-duotone ph-paw-print" style="font-size:18px;color:var(--color-accent);flex:none"></i>{{ it }}</span></sc-for>
+            </div>
+          </div>
+          <figure style="margin:0;flex:1 1 360px;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="aspect-ratio:4/5"><image-slot id="svc-{{ svc.id }}" shape="rect" src="{{ svc.img }}" placeholder="Fotografija usluge"></image-slot></div></figure>
+        </div>
+      </section>
+      <section style="max-width:1600px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 72px">
+        <div class="card elev-sm" style="padding:clamp(24px,4vw,48px);gap:16px;background:var(--color-accent-100)">
+          <span style="font-size:clamp(28px,3.5vw,36px);font-weight:600">{{ t.bookTitle }}</span>
+          <p style="margin:0;font-size:18px;line-height:1.6;max-width:60ch;color:var(--color-accent-900)">{{ t.bookLead }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+            <a class="btn btn-primary" href="{{ c.tel1 }}" style="color:var(--color-bg);font-size:17px;padding:14px 22px"><i class="ph-duotone ph-phone" style="font-size:20px"></i>{{ t.callLong }}</a>
+            <a class="btn btn-secondary" href="{{ c.viber }}" style="font-size:17px;padding:14px 18px;text-decoration:none"><i class="ph-duotone ph-chat-circle-dots" style="font-size:20px"></i>{{ t.viber }}</a>
+            <a class="btn btn-secondary" href="{{ c.whatsapp }}" target="_blank" style="font-size:17px;padding:14px 18px;text-decoration:none"><i class="ph-duotone ph-whatsapp-logo" style="font-size:20px"></i>{{ t.whatsapp }}</a>
+          </div>
+        </div>
+      </section>
+      <section style="max-width:1600px;margin:0 auto;padding:0 clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:20px">
+        <h2 style="margin:0;font-size:28px">{{ t.otherServices }}</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:12px 32px"><sc-for list="{{ otherServices }}" as="s" hint-placeholder-count="5"><a href="{{ s.href }}" onClick="{{ s.open }}" style="display:flex;align-items:center;gap:8px;font-size:18px"><i class="ph-duotone {{ s.icon }}" style="font-size:22px"></i>{{ s.name }}</a></sc-for></div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1600px;margin:0 auto;padding:48px clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:72px">
+        <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.teamTitle }}</h1><p style="margin:0;font-size:19px;line-height:1.6;color:var(--color-neutral-800)">{{ t.teamLead }}</p></div>
+        <sc-for list="{{ team }}" as="m" hint-placeholder-count="2">
+          <article style="display:flex;flex-wrap:wrap;gap:32px 56px;align-items:stretch">
+            <figure style="margin:0;flex:0 0 clamp(170px,22vw,260px);overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="height:100%;min-height:230px"><image-slot id="team-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
+            <div style="flex:1 1 360px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+              <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700);line-height:1">{{ m.role }}</span>
+              <h2 style="margin:0;font-size:clamp(30px,3.5vw,40px);line-height:1.15">{{ m.name }}</h2>
+              <sc-for list="{{ m.bio }}" as="para" hint-placeholder-count="2"><p style="margin:0;font-size:18px;line-height:1.7;color:var(--color-neutral-800);max-width:64ch">{{ para }}</p></sc-for>
+            </div>
+          </article>
+        </sc-for>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isPrices }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1600px;margin:0 auto;padding:32px clamp(20px,5vw,72px) 48px;display:flex;flex-direction:column;gap:16px">
+        <h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.pricesTitle }}</h1>
+        <p style="margin:0;font-size:19px;line-height:1.6;max-width:60ch;color:var(--color-neutral-800)">{{ t.pricesLead }}</p>
+      </section>
+      <sc-for list="{{ priceGroups }}" as="g" hint-placeholder-count="6">
+        <section style="{{ g.bandStyle }}">
+          <div style="max-width:1600px;margin:0 auto;padding:48px clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-start">
+            <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:16px;position:sticky;top:24px">
+              <span style="width:64px;height:64px;border-radius:50%;background:var(--color-bg);display:grid;place-items:center;box-shadow:var(--shadow-sm)"><i class="ph-duotone {{ g.icon }}" style="font-size:32px;color:var(--color-accent-700)"></i></span>
+              <h2 style="margin:0;font-size:clamp(28px,3vw,38px);line-height:1.15">{{ g.name }}</h2>
+            </div>
+            <div style="flex:2 1 460px;display:flex;flex-direction:column">
+              <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="4">
+                <span style="display:flex;justify-content:space-between;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--color-divider);font-size:18px;line-height:1.4"><span>{{ r.name }}</span><span style="font-weight:600;color:var(--color-accent-700);white-space:nowrap">{{ r.price }}</span></span>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+      </sc-for>
+      <section style="max-width:1600px;margin:0 auto;padding:40px clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:16px;line-height:1.55;color:var(--color-neutral-700);max-width:60ch">{{ t.priceNote }}</p>
+        <a class="btn btn-primary" href="{{ c.tel1 }}" style="align-self:flex-start;color:var(--color-bg);font-size:17px;padding:14px 28px;border-radius:999px;white-space:nowrap"><i class="ph-duotone ph-phone-call" style="font-size:20px;transform-origin:50% 72%;animation:vp-ring 2.6s ease-in-out infinite"></i>{{ t.callLong }}</a>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1600px;margin:0 auto;padding:48px clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:40px">
+        <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.galleryTitle }}</h1><p style="margin:0;font-size:19px;line-height:1.6;color:var(--color-neutral-800)">{{ t.galleryLead }}</p><a href="{{ c.igUrl }}" target="_blank" style="font-size:18px;display:flex;align-items:center;gap:6px"><i class="ph-duotone ph-instagram-logo" style="font-size:22px"></i>{{ c.ig }}</a></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:32px 20px">
+          <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
+            <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+              <div style="overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="aspect-ratio:1"><image-slot id="gal-{{ $index }}" shape="rect" src="{{ g.src }}" placeholder="Fotografija pacijenta"></image-slot></div></div>
+              <figcaption style="margin:0;font-size:15px;line-height:1.45;color:var(--color-neutral-800)">{{ g.caption }}</figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1600px;margin:0 auto;padding:48px clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:56px">
+        <h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.blogTitle }}</h1>
+        <sc-for list="{{ articles }}" as="a" hint-placeholder-count="3">
+          <a href="{{ a.href }}" onClick="{{ a.open }}" style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;text-decoration:none;color:var(--color-text)">
+            <span style="display:block;flex:0 1 320px;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><span style="display:block;aspect-ratio:4/3"><image-slot id="blog-{{ a.id }}" shape="rect" src="{{ a.img }}" placeholder="Fotografija"></image-slot></span></span>
+            <span style="flex:1 1 360px;display:flex;flex-direction:column;gap:12px"><span style="font-size:clamp(26px,3vw,34px);font-weight:600;line-height:1.2">{{ a.title }}</span><span style="font-size:18px;line-height:1.55;color:var(--color-neutral-800)">{{ a.lead }}</span><span style="font-size:16px;color:var(--color-accent-700)">{{ t.read }} →</span></span>
+          </a>
+        </sc-for>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isArticle }}" hint-placeholder-val="{{ false }}">
+      <article style="max-width:1600px;margin:0 auto;padding:40px clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:28px">
+        <a href="#/saveti" onClick="{{ goBlog }}" style="font-size:16px">← {{ t.blogTitle }}</a>
+        <h1 style="margin:0;font-size:clamp(40px,5.5vw,64px);line-height:1.1;max-width:20ch">{{ art.title }}</h1>
+        <p style="margin:0;font-size:22px;font-style:italic;line-height:1.5;max-width:52ch">{{ art.lead }}</p>
+        <figure style="margin:12px 0;max-width:820px;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="aspect-ratio:16/9"><image-slot id="art-{{ art.id }}" shape="rect" src="{{ art.img }}" placeholder="Fotografija"></image-slot></div></figure>
+        <sc-for list="{{ art.body }}" as="para" hint-placeholder-count="3"><p style="margin:0;font-size:19px;line-height:1.75;max-width:64ch">{{ para }}</p></sc-for>
+        <a class="btn btn-primary" href="{{ c.tel1 }}" style="align-self:flex-start;margin-top:12px;color:var(--color-bg);font-size:17px;padding:14px 22px"><i class="ph-duotone ph-phone" style="font-size:20px"></i>{{ t.callLong }}</a>
+      </article>
+    </sc-if>
+
+    <sc-if value="{{ showContact }}" hint-placeholder-val="{{ true }}">
+      <section id="home-kontakt" style="background:var(--color-accent-100);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:-40px;position:relative;padding:72px max(clamp(20px,5vw,72px), calc((100% - 1600px) / 2 + clamp(20px,5vw,72px))) 80px;display:flex;flex-direction:column;gap:32px">
+        <iframe src="{{ c.mapEmbed }}" title="Mapa" loading="lazy" style="border:0;width:100%;height:clamp(300px,36vw,420px);border-radius:28px;box-shadow:var(--shadow-md);display:block"></iframe>
+        <div id="home-forma" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));border-radius:28px;overflow:hidden;box-shadow:var(--shadow-md);background:var(--color-bg)">
+          <div style="background:var(--color-accent);color:var(--color-bg);padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:22px">
+            <span style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.85">{{ formT.kicker }}</span>
+            <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);line-height:1.12;letter-spacing:-0.02em;color:var(--color-bg)">{{ formT.title }}</h2>
+            <div style="display:flex;flex-direction:column;gap:16px;font-size:16px">
+              <a href="{{ c.tel1 }}" style="display:flex;gap:12px;align-items:center;color:var(--color-bg);text-decoration:none"><i class="ph-duotone ph-phone" style="font-size:22px"></i><span>{{ c.phone1 }}</span></a>
+              <a href="{{ c.mailto }}" style="display:flex;gap:12px;align-items:center;color:var(--color-bg);text-decoration:none"><i class="ph-duotone ph-envelope-simple" style="font-size:22px"></i><span>{{ c.email }}</span></a>
+              <a href="{{ c.maps }}" target="_blank" style="display:flex;gap:12px;align-items:flex-start;color:var(--color-bg);text-decoration:none;line-height:1.45"><i class="ph-duotone ph-map-pin" style="font-size:22px"></i><span>Bulevar despota Stefana 61, Beograd</span></a>
+              <span style="display:flex;gap:12px;align-items:center"><i class="ph-duotone ph-clock" style="font-size:22px"></i><span>{{ formT.hoursVal }}</span></span>
+            </div>
+            <iframe src="{{ c.mapEmbed }}" title="Mapa" loading="lazy" style="border:0;width:100%;height:160px;border-radius:16px;display:block;margin-top:4px"></iframe>
+          </div>
+          <form onSubmit="{{ submitForm }}" style="padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--color-neutral-700)">{{ formT.name }}<input class="input" required value="{{ fName }}" onChange="{{ onName }}" placeholder="{{ formT.namePh }}"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--color-neutral-700)">{{ formT.phone }}<input class="input" required value="{{ fPhone }}" onChange="{{ onPhone }}" placeholder="{{ formT.phonePh }}"></label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--color-neutral-700)">{{ formT.service }}<select class="input" value="{{ fService }}" onChange="{{ onService }}"><sc-for list="{{ serviceNames }}" as="o" hint-placeholder-count="6"><option value="{{ o }}">{{ o }}</option></sc-for></select></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--color-neutral-700)">{{ formT.message }}<textarea class="input" rows="3" value="{{ fMsg }}" onChange="{{ onMsg }}" placeholder="{{ formT.messagePh }}" style="resize:vertical;min-height:84px"></textarea></label>
+            <button type="submit" class="btn btn-primary btn-block" style="color:var(--color-bg);font-size:17px;padding:15px;border-radius:999px">{{ formT.send }}</button>
+            <a href="{{ c.tel1 }}" style="align-self:center;display:flex;gap:8px;align-items:center;font-size:16px;text-decoration:none;color:var(--color-accent-700)"><i class="ph-duotone ph-phone-call" style="font-size:18px;transform-origin:50% 72%;animation:vp-ring 2.6s ease-in-out infinite"></i>{{ formT.callInstead }} {{ c.phone1 }}</a>
+          </form>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <footer style="background:var(--color-bg);border-radius:50% 50% 0 0 / 56px 56px 0 0;margin-top:-40px;position:relative">
+    <div style="max-width:1600px;margin:0 auto;padding:40px clamp(20px,5vw,72px) 20px;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-wrap:wrap;gap:28px 48px;justify-content:space-between">
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:16px">
+          <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700)">{{ t.hours }}</span>
+          <span style="display:flex;gap:10px;align-items:center"><i class="ph-duotone ph-clock" style="font-size:20px;color:var(--color-accent)"></i><span>{{ t.everyDay }} · <span style="font-weight:600">08–21</span></span></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:16px">
+          <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700)">{{ t.nav.contact }}</span>
+          <a href="{{ c.tel1 }}" style="display:flex;gap:10px;align-items:center;color:var(--color-text);text-decoration:none;font-weight:600;white-space:nowrap"><i class="ph-duotone ph-phone" style="font-size:20px;color:var(--color-accent)"></i><span>{{ c.phone1 }}</span></a>
+          <a href="{{ c.tel2 }}" style="display:flex;gap:10px;align-items:center;color:var(--color-text);text-decoration:none;white-space:nowrap"><i class="ph-duotone ph-first-aid" style="font-size:20px;color:var(--color-accent-2)"></i><span>{{ t.emergency }}: {{ c.phone2 }}</span></a>
+          <a href="{{ c.mailto }}" style="display:flex;gap:10px;align-items:center;color:var(--color-text);text-decoration:none;white-space:nowrap"><i class="ph-duotone ph-envelope-simple" style="font-size:20px;color:var(--color-accent)"></i><span>{{ c.email }}</span></a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:16px">
+          <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700)">{{ t.address }}</span>
+          <a href="{{ c.maps }}" target="_blank" style="display:flex;gap:10px;align-items:flex-start;color:var(--color-text);text-decoration:none;line-height:1.45"><i class="ph-duotone ph-map-pin" style="font-size:20px;color:var(--color-accent)"></i><span>Bulevar despota Stefana 61<br>Beograd</span></a>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;border-top:1px solid var(--color-divider);padding-top:20px">
+        <div style="display:flex;flex-wrap:wrap;gap:16px 20px;align-items:center">
+          <span style="display:flex;align-items:center;gap:12px;color:var(--color-text)"><span style="display:flex;align-items:center;gap:2px"><i class="ph-duotone ph-dog" style="font-size:28px"></i><i class="ph-duotone ph-first-aid" style="font-size:22px;color:var(--color-accent-2)"></i><i class="ph-duotone ph-cat" style="font-size:28px"></i></span><span style="display:flex;flex-direction:column;gap:1px"><span style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase">Vet</span><span style="font-size:26px;font-style:italic;line-height:1">Princess</span></span></span>
+          <div style="display:flex;gap:10px;align-items:center">
+            <a href="{{ c.igUrl }}" target="_blank" aria-label="Instagram" style="width:44px;height:44px;border-radius:999px;background:var(--color-accent-100);display:grid;place-items:center;color:var(--color-accent-700);text-decoration:none" style-hover="background:var(--color-accent-200)"><i class="ph-duotone ph-instagram-logo" style="font-size:22px"></i></a>
+            <a href="{{ c.tel1 }}" aria-label="Pozovite nas" style="width:44px;height:44px;border-radius:999px;background:var(--color-accent-100);display:grid;place-items:center;color:var(--color-accent-700);text-decoration:none" style-hover="background:var(--color-accent-200)"><i class="ph-duotone ph-phone-call" style="font-size:22px"></i></a>
+          </div>
+        </div>
+        <span style="font-size:14px;color:var(--color-neutral-700)">© 2026 Vet Princess</span>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:8px;padding:10px 12px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
+      <a class="btn btn-primary" href="{{ c.tel1 }}" style="flex:1;color:var(--color-bg);font-size:16px;padding:12px"><i class="ph-duotone ph-phone" style="font-size:20px"></i>{{ t.call }}</a>
+      <a class="btn btn-secondary" href="{{ c.viber }}" style="font-size:16px;padding:12px;text-decoration:none"><i class="ph-duotone ph-chat-circle-dots" style="font-size:20px"></i></a>
+      <a class="btn btn-secondary" href="{{ c.whatsapp }}" style="font-size:16px;padding:12px;text-decoration:none"><i class="ph-duotone ph-whatsapp-logo" style="font-size:20px"></i></a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { route: (location.hash || "#/").slice(2), lang: localStorage.getItem("vp-lang") || "sr", w: window.innerWidth, menu: false, ready: !!window.VET_CONTENT, form: { name: "", phone: "", service: "", msg: "" } };
+  componentDidMount() {
+    this.onHash = () => { const route = (location.hash || "#/").slice(2); this.setState({ route, menu: false }, () => { const [p, sub] = route.split("/"); const el = p === "usluge" && sub && document.getElementById("usluga-" + sub); if (el) setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 16, behavior: "smooth" }), 60); else window.scrollTo(0, 0); }); };
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    addEventListener("hashchange", this.onHash); addEventListener("resize", this.onResize);
+    this.lastStep = Date.now();
+    this.auto = setInterval(() => { if (Date.now() - this.lastStep >= 7500) this.step(1); }, 500);
+    this.ro = new ResizeObserver(() => { const el = this.sliderRef.current; if (el && el.clientWidth !== this.state.sw) this.setState({ sw: el.clientWidth }); });
+    const tryObs = () => { if (this.sliderRef.current) this.ro.observe(this.sliderRef.current); else setTimeout(tryObs, 200); }; tryObs();
+    if (!this.state.ready) this.poll = setInterval(() => { if (window.VET_CONTENT && window.VET_CONTENT.t.ru) { clearInterval(this.poll); this.setState({ ready: true }); } }, 50);
+  }
+  componentWillUnmount() { clearInterval(this.auto); this.ro && this.ro.disconnect(); removeEventListener("hashchange", this.onHash); removeEventListener("resize", this.onResize); clearInterval(this.poll); }
+  sliderRef = React.createRef();
+  sliderVals(gal) {
+    const len = gal.length;
+    const W = this.state.sw || 1000, gap = 20;
+    const n = W >= 960 ? 4 : W >= 640 ? 3 : W >= 400 ? 2 : 1;
+    const cw = (W - gap * (n - 1)) / n, maxIdx = Math.max(0, len - n);
+    const idx = Math.min(this.state.si || 0, maxIdx);
+    this.maxIdx = maxIdx;
+    return {
+      trackStyle: { display: "flex", gap, transform: "translateX(" + (-idx * (cw + gap)) + "px)", transition: "transform 700ms cubic-bezier(.4,0,.2,1)" },
+      slides: gal.map(g => ({ style: { flex: "none", width: cw, aspectRatio: "1", borderRadius: "var(--radius-md)", backgroundColor: "var(--color-neutral-200)", backgroundImage: "url(\"" + g.src + "\")", backgroundSize: "cover", backgroundPosition: "center" } })),
+      slidePrev: () => this.step(-1), slideNext: () => this.step(1)
+    };
+  }
+  step(d) {
+    const m = this.maxIdx || 0, cur = Math.min(this.state.si || 0, m);
+    let n = cur + d; if (n > m) n = 0; if (n < 0) n = m;
+    this.setState({ si: n }); this.lastStep = Date.now();
+  }
+  trackRef = React.createRef();
+  slide(dir, loop) {
+    const el = this.trackRef.current; if (!el || !el.firstElementChild) return;
+    const kids = el.children, base = kids[0].offsetLeft, step = kids.length > 1 ? kids[1].offsetLeft - base : kids[0].offsetWidth;
+    const max = el.scrollWidth - el.clientWidth;
+    const lastIdx = Math.max(0, Math.ceil(max / step - 0.01));
+    const cur = el.scrollLeft >= max - 4 ? lastIdx : Math.round(el.scrollLeft / step);
+    let target = cur + dir;
+    if (target > lastIdx) { if (!loop) return; target = 0; }
+    if (target < 0) target = 0;
+    el.scrollTo({ left: Math.min(max, kids[target].offsetLeft - base) });
+  }
+  go(r) { return (e) => { if (e) e.preventDefault(); location.hash = "#/" + r; }; }
+  scrollHome(id) { return (e) => { if (e) e.preventDefault(); const doScroll = () => { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" }); }; if (this.state.route) { location.hash = "#/"; setTimeout(doScroll, 90); } else doScroll(); }; }
+  renderVals() {
+    const C = window.VET_CONTENT;
+    if (!C || !C.t[this.state.lang]) return { wide: true, isHome: true, showContact: true };
+    const L = this.state.lang, t = C.t[L];
+    const [page, sub] = this.state.route.split("/");
+    const narrow = this.state.w < 980;
+    const routes = [["", "home"], ["usluge", "services"], ["tim", "team"], ["cenovnik", "prices"], ["pacijenti", "gallery"], ["saveti", "blog"], ["pitanja", "faq"], ["kontakt", "contact"]];
+    const nav = [
+      { label: t.nav.services, id: "home-usluge" },
+      { label: t.nav.prices, id: "home-cenovnik" },
+      { label: t.nav.team, id: "home-tim" },
+      { label: t.nav.gallery, id: "home-pacijenti" },
+      { label: t.nav.blog, id: "home-blog" },
+      { label: t.nav.faq, id: "home-faq" },
+      { label: t.nav.location, id: "home-kontakt" },
+      { label: t.nav.contact, id: "home-forma" }
+    ].map(n => ({ label: n.label, href: "#/", onClick: this.scrollHome(n.id), style: { fontSize: 16, color: "var(--color-text)", textDecoration: "none" } }));
+    const services = C.services.map(s => ({ id: s.id, icon: s.icon, img: s.img, ...s[L], href: "#/usluge/" + s.id, open: this.go("usluge/" + s.id) }));
+    const svc = services.find(s => s.id === sub) || services[0];
+    const articles = C.articles.map(a => ({ id: a.id, img: a.img, ...a[L], href: "#/savet/" + a.id, open: this.go("savet/" + a.id) }));
+    const art = articles.find(a => a.id === sub) || articles[0];
+    const gallery = C.gallery.map(g => ({ src: g.src, caption: g[L] }));
+    const priceFmt = (n) => n.toLocaleString(L === "sr" ? "de-DE" : L === "ru" ? "ru-RU" : "en-US");
+    const priceGroups = C.prices.map((p, i) => {
+      const s = services.find(x => x.id === p.id);
+      return {
+        id: p.id, name: s.name, icon: s.icon, href: "#/usluge/" + p.id, open: this.go("usluge/" + p.id),
+        rows: p.rows.map(r => ({ name: r[L] || r.sr, price: `${t.priceFrom} ${priceFmt(r.from)} ${t.priceUnit}` })),
+        bandStyle: { background: i % 2 ? "var(--color-accent-100)" : "var(--color-bg)" }
+      };
+    });
+    const homePriceGroups = priceGroups.slice(0, 3).map(g => ({ ...g, rows: g.rows.slice(0, 3) }));
+    const isHome = !page;
+    return {
+      t, c: C.contact, img: C.img, nav, services, svc, articles, art, gallery, priceGroups, homePriceGroups,
+      goPrices: this.go("cenovnik"),
+      galleryTop: gallery.slice(0, 4),
+      otherServices: services.filter(s => s.id !== svc.id),
+      team: C.team.map(m => {
+        const bs = ({
+          galja: { sr: ["Doktorka veterinarske medicine i osnivačica ambulante. Diplomirala je na Fakultetu veterinarske medicine u Beogradu 2000. godine i ima više od 25 godina iskustva.", "Znanje je gradila i na usavršavanjima u Nemačkoj, Omanu i Americi. U rad uvodi savremene metode — fotomodularnu terapiju, elektrohemoterapiju i onkološku hirurgiju. Svakom pacijentu pristupa kao svom ljubimcu."],
+            en: ["Doctor of veterinary medicine and founder of the clinic. She graduated from the Faculty of Veterinary Medicine in Belgrade in 2000 and has over 25 years of experience.", "She trained further in Germany, Oman and the United States, and brings modern methods into her work — photobiomodulation therapy, electrochemotherapy and oncological surgery. She treats every patient as her own."],
+            ru: ["Доктор ветеринарной медицины и основательница клиники. Окончила факультет ветеринарной медицины в Белграде в 2000 году, опыт более 25 лет.", "Повышала квалификацию в Германии, Омане и США. Применяет современные методы — фотомодуляционную терапию, электрохимиотерапию и онкологическую хирургию. К каждому пациенту относится как к своему питомцу."] },
+          jovana: { sr: ["Doktorka veterinarske medicine i članica tima Vet Princess. Diplomirala je na Fakultetu veterinarske medicine u Beogradu 2019, a hirurgiju specijalizirala 2025. godine.", "Znanje stalno proširuje kroz stručne edukacije i kongrese. Svaki pregled počinje pažljivim slušanjem vlasnika, uz jasnu komunikaciju o stanju i lečenju ljubimca."],
+            en: ["Doctor of veterinary medicine and member of the Vet Princess team. She graduated in Belgrade in 2019 and completed her specialisation in surgery in 2025.", "She keeps expanding her knowledge through training and congresses. Every visit begins by listening carefully to the owner, with clear communication about the pet's condition and care."],
+            ru: ["Доктор ветеринарной медицины и член команды Vet Princess. Окончила факультет в Белграде в 2019 году, специализацию по хирургии — в 2025.", "Постоянно расширяет знания на обучениях и конгрессах. Каждый осмотр начинает с внимательного выслушивания владельца и понятно объясняет состояние и лечение питомца."] }
+        })[m.id][L];
+        return { id: m.id, img: m.img, ...m[L], bio: bs };
+      }),
+      teamPreview: C.team.map(m => {
+        const d = ({
+          galja: { title: { sr: "dr vet. med.", en: "DVM", ru: "д-р вет. мед." }, name: { sr: "Galja Isajev", en: "Galja Isajev", ru: "Галя Исаев" },
+            line: { sr: "Osnivačica ambulante. Kod nje svaki ljubimac dobije vreme, pažnju i mirnu ruku.", en: "Founder of the clinic. With her, every pet gets time, attention and a steady hand.", ru: "Основательница клиники. У неё каждый питомец получает время, внимание и спокойные руки." },
+            stats: { sr: ["25+ godina iskustva", "300+ zadovoljnih vlasnika ljubimaca"], en: ["25+ years of experience", "300+ happy pet owners"], ru: ["Опыт 25+ лет", "300+ довольных владельцев"] } },
+          jovana: { title: { sr: "dr vet. med.", en: "DVM", ru: "д-р вет. мед." }, name: { sr: "Jovana Petrović", en: "Jovana Petrović", ru: "Йована Петрович" },
+            line: { sr: "Svaki pregled počinje tako što pažljivo sasluša vlasnika i njegovog ljubimca.", en: "Every visit begins with her listening carefully to the owner and their pet.", ru: "Каждый осмотр начинается с того, что она внимательно выслушивает владельца и питомца." },
+            stats: { sr: ["7+ godina iskustva", "Strpljiv pristup svakom pacijentu"], en: ["7+ years of experience", "A patient approach to every patient"], ru: ["Опыт 7+ лет", "Терпеливый подход к каждому пациенту"] } }
+        })[m.id];
+        return { id: m.id, img: m.img, title: d.title[L], name: d.name[L], line: d.line[L], stats: d.stats[L] };
+      }),
+      langs: ["sr", "en", "ru"].map(code => ({ label: code.toUpperCase(), onClick: () => { localStorage.setItem("vp-lang", code); this.setState({ lang: code }); },
+        style: { font: "inherit", fontSize: 13, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", border: 0, borderRadius: 999, padding: "4px 10px", minWidth: 36, background: code === L ? "var(--color-accent-2-700)" : "transparent", color: code === L ? "var(--color-bg)" : "var(--color-accent-2-800)" } })),
+      trail: Array.from({ length: 18 }, (_, i) => ({ style: { position: "absolute", left: i * 66, top: i % 2 ? 4 : 34, fontSize: 28, color: "var(--color-accent)", transform: "rotate(90deg)", opacity: 0.3 + 0.7 * (i + 1) / 18 } })),
+      narrow, wide: !narrow, showMenu: narrow && this.state.menu, toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      goHome: this.go(""), goServices: this.go("usluge"), goTeam: this.go("tim"), goBlog: this.go("saveti"), goGallery: this.go("pacijenti"),
+      faqItems: t.faq.slice(0, 4).map((q, i) => { const open = this.state.faqOpen === i; return { ...q, open, sign: open ? "−" : "+",
+        toggle: () => this.setState({ faqOpen: open ? null : i }),
+        boxStyle: { borderRadius: 20, background: open ? "var(--color-accent-100)" : "var(--color-neutral-100)", boxShadow: open ? "none" : "var(--shadow-sm)", transition: "background 200ms" },
+        iconWrap: { flex: "none", width: 36, height: 36, borderRadius: 999, display: "grid", placeItems: "center", background: "var(--color-accent)", color: "var(--color-bg)" } }; }),
+      serviceRows: services.map((s, i) => ({ ...s, anchor: "usluga-" + s.id,
+        cta: s.id === "ostalo" ? ({ sr: "Pozovite nas", en: "Call us", ru: "Позвоните нам" })[L] : t.bookTitle,
+        bandStyle: { background: i % 2 ? "var(--color-bg)" : "var(--color-accent-100)", borderRadius: "50% 50% 0 0 / 56px 56px 0 0", marginTop: i ? -40 : 0, position: "relative", padding: "64px 0 80px" },
+        rowStyle: { maxWidth: 1600, margin: "0 auto", padding: "0 clamp(20px,5vw,72px)", display: "flex", flexWrap: "wrap", gap: "40px 64px", alignItems: "center", flexDirection: i % 2 ? "row-reverse" : "row" },
+        imgStyle: { width: "100%", height: "100%", backgroundImage: "url(\"" + s.img + "\")", backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "var(--color-neutral-200)", transition: "transform 600ms ease" } })), sliderRef: this.sliderRef, arrowInset: narrow ? "8px" : "-24px", ...this.sliderVals(gallery),
+      isHome, isServices: page === "usluge", isService: false, isTeam: page === "tim", isPrices: page === "cenovnik",
+      isGallery: page === "pacijenti", isBlog: page === "saveti", isArticle: page === "savet", isFaq: page === "pitanja",
+      bandServices: ["preventiva", "dijagnostika", "hirurgija", "stomatologija"].map(id => services.find(s => s.id === id)),
+      trust: ({ sr: ["Iskustvo i poverenje", "Savremena oprema", "Svakog dana 08–21"], en: ["Experience and trust", "Modern equipment", "Open daily 08–21"], ru: ["Опыт и доверие", "Современное оборудование", "Ежедневно 08–21"] })[L]
+        .map((label, i) => ({ label, icon: ["ph-heart", "ph-shield-plus", "ph-clock"][i], style: { display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 8, padding: "16px 8px", borderRadius: 20, background: "var(--color-accent-100)" } })),
+      ringIcon: this.ring || (this.ring = React.createElement("i", { className: "ph-duotone ph-phone-call vp-ring", "aria-hidden": "true", style: { fontSize: 20, display: "inline-block", animation: "vp-ring 7s ease-in-out infinite 2s" } })),
+      homeServices: services.filter(s => s.id !== "ostalo"),
+      navTop: nav.filter(n => n.href !== "#/kontakt"),
+      ringIconSm: this.ringSm || (this.ringSm = React.createElement("i", { className: "ph-duotone ph-phone-call vp-ring", "aria-hidden": "true", style: { fontSize: 16, display: "inline-block", animation: "vp-ring 2s ease-in-out infinite 1s" } })),
+      contactLevel: page === "kontakt" ? 1 : 2,
+      ...(() => {
+        const F = this.state.form, set = (k) => (e) => { const v = e.target.value; this.setState(s => ({ form: { ...s.form, [k]: v } })); };
+        const ft = ({
+          sr: { kicker: "Kontakt", title: "Zakažite pregled", hoursVal: "Svakog dana 08–21", name: "Ime", namePh: "Vaše ime", phone: "Telefon", phonePh: "06x xxx xxxx", service: "Usluga", message: "Poruka", messagePh: "Za koga, kakav problem…", send: "Pošalji zahtev", callInstead: "Pozovite", other: "Drugo", subject: "Zahtev za termin — Vet Princess", mailLabels: { name: "Ime", phone: "Telefon", service: "Usluga", msg: "Poruka" }, alert: "Hvala! Otvoriće se vaš email sa popunjenim zahtevom." },
+          en: { kicker: "Contact", title: "Book a check-up", hoursVal: "Every day 08–21", name: "Name", namePh: "Your name", phone: "Phone", phonePh: "Enter your phone number", service: "Service", message: "Message", messagePh: "For whom, what problem…", send: "Send request", callInstead: "Call", other: "Other", subject: "Appointment request — Vet Princess", mailLabels: { name: "Name", phone: "Phone", service: "Service", msg: "Message" }, alert: "Thank you! Your email will open with the request filled in." },
+          ru: { kicker: "Контакт", title: "Запишитесь на осмотр", hoursVal: "Ежедневно 08–21", name: "Имя", namePh: "Ваше имя", phone: "Телефон", phonePh: "Введите ваш номер телефона", service: "Услуга", message: "Сообщение", messagePh: "Для кого, какая проблема…", send: "Отправить запрос", callInstead: "Позвоните", other: "Другое", subject: "Запрос на приём — Vet Princess", mailLabels: { name: "Имя", phone: "Телефон", service: "Услуга", msg: "Сообщение" }, alert: "Спасибо! Откроется ваша почта с заполненным запросом." }
+        })[L];
+        return {
+          formT: ft, serviceNames: [...services.map(s => s.name), ft.other],
+          fName: F.name, fPhone: F.phone, fService: F.service || services[0].name, fMsg: F.msg,
+          onName: set("name"), onPhone: set("phone"), onService: set("service"), onMsg: set("msg"),
+          submitForm: (e) => {
+            e.preventDefault();
+            const body = `${ft.mailLabels.name}: ${F.name}\n${ft.mailLabels.phone}: ${F.phone}\n${ft.mailLabels.service}: ${F.service || services[0].name}\n${ft.mailLabels.msg}: ${F.msg}`;
+            window.location.href = `${C.contact.mailto}?subject=${encodeURIComponent(ft.subject)}&body=${encodeURIComponent(body)}`;
+          }
+        };
+      })(),
+      showContact: isHome || page === "kontakt" || page === "tim"
+    };
+  }
+}
+</script>
+</body>
+</html>
