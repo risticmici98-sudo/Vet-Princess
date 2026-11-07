@@ -48,7 +48,6 @@
   <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
     <div style="background:var(--color-bg);box-shadow:var(--shadow-md);padding:8px clamp(16px,5vw,72px) 24px;display:flex;flex-direction:column;gap:4px">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7"><a href="{{ n.href }}" onClick="{{ n.onClick }}" style="font-size:23px;font-weight:600;color:var(--color-text);text-decoration:none;padding:16px 4px;border-bottom:1px solid var(--color-divider)">{{ n.label }}</a></sc-for>
-      <a class="btn btn-primary" href="{{ c.tel1 }}" style="margin-top:14px;color:var(--color-bg);font-size:18px;padding:15px;border-radius:999px;justify-content:center"><i class="ph-duotone ph-phone" style="font-size:20px"></i>{{ t.callLong }}</a>
     </div>
   </sc-if>
 
