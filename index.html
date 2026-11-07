@@ -46,7 +46,7 @@
     <a class="btn btn-primary" href="{{ c.tel1 }}" aria-label="{{ t.callLong }}" style="margin-left:auto;flex:none;color:var(--color-bg);font-size:clamp(12px,3vw,16px);padding:clamp(9px,1.4vw,11px) clamp(11px,2.4vw,22px);border-radius:999px;white-space:nowrap;gap:clamp(6px,1vw,8px);align-self:flex-start">{{ ringIcon }}{{ t.call }}</a>
   </nav>
   <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
-    <div style="background:var(--color-bg);box-shadow:var(--shadow-md);padding:8px clamp(16px,5vw,72px) 24px;display:flex;flex-direction:column;gap:4px">
+    <div style="background:var(--color-bg);box-shadow:var(--shadow-md);min-height:100dvh;padding:8px clamp(16px,5vw,72px) 24px;display:flex;flex-direction:column;gap:4px">
       <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7"><a href="{{ n.href }}" onClick="{{ n.onClick }}" style="font-size:23px;font-weight:600;color:var(--color-text);text-decoration:none;padding:16px 4px;border-bottom:1px solid var(--color-divider)">{{ n.label }}</a></sc-for>
     </div>
   </sc-if>
