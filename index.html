@@ -236,7 +236,7 @@
         <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.teamTitle }}</h1><p style="margin:0;font-size:19px;line-height:1.6;color:var(--color-neutral-800)">{{ t.teamLead }}</p></div>
         <sc-for list="{{ team }}" as="m" hint-placeholder-count="2">
           <article style="display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start">
-            <figure style="margin:0;flex:0 0 clamp(170px,22vw,260px);aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="width:100%;height:100%"><image-slot id="team-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
+            <figure style="margin:0;flex:0 0 clamp(170px,22vw,260px);aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="width:100%;height:100%"><image-slot id="onama-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
             <div style="flex:1 1 360px;display:flex;flex-direction:column;justify-content:center;gap:14px">
               <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700);line-height:1">{{ m.role }}</span>
               <h2 style="margin:0;font-size:clamp(30px,3.5vw,40px);line-height:1.15">{{ m.name }}</h2>
