@@ -238,6 +238,7 @@ gallery.splice(5, 0, { src: "pacijent-zeka.jpg", sr: "", en: "", ru: "" });
 services.forEach(s => { s.img = "usluga-" + s.id + ".png"; });
 const artImg = { brahi: "blog-brahi.png", predenje: "blog-predenje.png", hrana: "blog-hrana.png" };
 articles.forEach(a => { a.img = artImg[a.id]; });
+team.forEach(m => { m.img = "tim-" + m.id + ".webp"; });
 const prices = [
   { id: "preventiva", rows: [
     { from: 1500, sr: "Klinički pregled", en: "Clinical examination" },

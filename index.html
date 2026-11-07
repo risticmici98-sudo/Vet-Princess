@@ -12,11 +12,12 @@
 <helmet>
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <script src="ds-bundle.js"></script>
 <script src="./image-slot.js"></script>
-<script src="./vet-content.js?v=3"></script>
-<script src="./vet-content-ru.js?v=3"></script>
-<style>body{margin:0;background:var(--color-bg)}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}@keyframes vp-ring{0%,12%,100%{transform:rotate(0)}2%,6%{transform:rotate(-10deg)}4%,8%{transform:rotate(10deg)}10%{transform:rotate(0)}}@keyframes vp-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){[style*="vp-marquee"]{animation:none!important}.vp-ring{animation:none!important}}</style>
+<script src="./vet-content.js?v=4"></script>
+<script src="./vet-content-ru.js?v=4"></script>
+<style>:root{--color-bg:#ffffff}body{margin:0;background:#ffffff}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}@keyframes vp-ring{0%,12%,100%{transform:rotate(0)}2%,6%{transform:rotate(-10deg)}4%,8%{transform:rotate(10deg)}10%{transform:rotate(0)}}@keyframes vp-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){[style*="vp-marquee"]{animation:none!important}.vp-ring{animation:none!important}}</style>
 </helmet>
 <div style="min-height:100vh;display:flex;flex-direction:column">
 
@@ -29,31 +30,34 @@
     </div>
   </div>
 
-  <nav class="nav" style="max-width:1600px;width:100%;margin:0 auto;padding:20px clamp(20px,5vw,72px);flex-wrap:wrap;gap:12px 24px">
-    <a href="#/" onClick="{{ goHome }}" class="nav-brand" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--color-text)">
-      <span style="display:flex;align-items:center;gap:2px"><i class="ph-duotone ph-dog" style="font-size:30px"></i><i class="ph-duotone ph-first-aid" style="font-size:24px;color:var(--color-accent-2)"></i><i class="ph-duotone ph-cat" style="font-size:30px"></i></span>
-      <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase">Vet</span><span style="font-size:28px;font-style:italic;font-weight:400;line-height:1">Princess</span></span>
-    </a>
+  <nav class="nav" style="max-width:1600px;width:100%;margin:0 auto;padding:12px clamp(16px,5vw,72px);flex-wrap:nowrap;gap:10px 24px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:6px;flex:none">
+      <a href="#/" onClick="{{ goHome }}" class="nav-brand" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-text);min-width:0">
+        <span style="display:flex;align-items:center;gap:2px;flex:none"><i class="ph-duotone ph-dog" style="font-size:clamp(23px,6vw,28px)"></i><i class="ph-duotone ph-first-aid" style="font-size:clamp(18px,4.8vw,22px);color:var(--color-accent-2)"></i><i class="ph-duotone ph-cat" style="font-size:clamp(23px,6vw,28px)"></i></span>
+        <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase">Vet</span><span style="font-size:clamp(20px,5vw,28px);font-style:italic;font-weight:400;line-height:1">Princess</span></span>
+      </a>
+      <sc-if value="{{ narrowHome }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="Meni" style="all:unset;cursor:pointer;color:var(--color-text);align-self:flex-start;padding:2px 0;line-height:0"><i class="ph ph-list" style="font-size:30px"></i></button>
+      </sc-if>
+    </div>
     <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
       <sc-for list="{{ navTop }}" as="n" hint-placeholder-count="6"><a href="{{ n.href }}" onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</a></sc-for>
     </sc-if>
-    <a class="btn btn-primary" href="{{ c.tel1 }}" aria-label="{{ t.callLong }}" style="color:var(--color-bg);font-size:16px;padding:10px 20px;border-radius:999px;white-space:nowrap;gap:8px">{{ ringIcon }}{{ t.call }}</a>
-    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
-      <button type="button" class="btn btn-secondary btn-icon" onClick="{{ toggleMenu }}" aria-label="Menu"><i class="ph-duotone ph-list" style="font-size:22px"></i></button>
-    </sc-if>
-    <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
-      <div style="flex-basis:100%;display:flex;flex-direction:column;gap:14px;padding:12px 0 8px">
-        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7"><a href="{{ n.href }}" onClick="{{ n.onClick }}" style="font-size:20px;color:var(--color-text)">{{ n.label }}</a></sc-for>
-      </div>
-    </sc-if>
+    <a class="btn btn-primary" href="{{ c.tel1 }}" aria-label="{{ t.callLong }}" style="margin-left:auto;flex:none;color:var(--color-bg);font-size:clamp(12px,3vw,16px);padding:clamp(9px,1.4vw,11px) clamp(11px,2.4vw,22px);border-radius:999px;white-space:nowrap;gap:clamp(6px,1vw,8px);align-self:flex-start">{{ ringIcon }}{{ t.call }}</a>
   </nav>
+  <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--color-bg);box-shadow:var(--shadow-md);padding:8px clamp(16px,5vw,72px) 24px;display:flex;flex-direction:column;gap:4px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7"><a href="{{ n.href }}" onClick="{{ n.onClick }}" style="font-size:23px;font-weight:600;color:var(--color-text);text-decoration:none;padding:16px 4px;border-bottom:1px solid var(--color-divider)">{{ n.label }}</a></sc-for>
+      <a class="btn btn-primary" href="{{ c.tel1 }}" style="margin-top:14px;color:var(--color-bg);font-size:18px;padding:15px;border-radius:999px;justify-content:center"><i class="ph-duotone ph-phone" style="font-size:20px"></i>{{ t.callLong }}</a>
+    </div>
+  </sc-if>
 
   <main style="flex:1">
 
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
       <section style="max-width:1600px;margin:0 auto;padding:0 clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;align-items:stretch;gap:24px 40px">
         <div style="flex:1 1 440px;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(14px,2vw,28px);padding:clamp(8px,2vw,24px) 0">
-          <h1 style="margin:0;font-size:clamp(34px,6.4vw,84px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.heroA }} <em style="font-weight:400">{{ t.heroB }}</em></h1>
+          <h1 style="margin:0;font-size:clamp(34px,6.4vw,84px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.heroA }}<br><em style="font-weight:400">{{ t.heroB }}</em></h1>
           <p style="margin:0;font-size:clamp(16px,1.6vw,20px);line-height:1.55;max-width:44ch;color:var(--color-neutral-800)">{{ t.heroSub }}</p>
           <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;max-width:520px">
             <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="3">
@@ -61,10 +65,10 @@
             </sc-for>
           </div></sc-if>
         </div>
-        <div style="flex:1 1 420px;aspect-ratio:566/650;max-width:520px;margin-left:auto;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 92%,transparent 100%),linear-gradient(to bottom,#000 85%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 92%,transparent 100%),linear-gradient(to bottom,#000 85%,transparent 100%);mask-composite:intersect">
+        <div style="flex:1 1 420px;aspect-ratio:566/650;max-width:min(520px,58vw);margin-inline:auto;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 92%,transparent 100%),linear-gradient(to bottom,#000 85%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 92%,transparent 100%),linear-gradient(to bottom,#000 85%,transparent 100%);mask-composite:intersect">
           <image-slot id="home-hero-pets" shape="rect" fit="cover" src="hero-pacijent.png" placeholder="Prevucite fotografiju: pas i mačka"></image-slot>
         </div>
-        <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div style="flex-basis:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-bottom:24px">
+        <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div style="flex-basis:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-bottom:8px">
             <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="3">
               <div style="{{ tr.style }}"><i class="ph-duotone {{ tr.icon }}" style="font-size:40px;color:var(--color-accent)"></i><span style="font-size:15px;line-height:1.35;color:var(--color-neutral-800)">{{ tr.label }}</span></div>
             </sc-for>
@@ -108,14 +112,14 @@
         <div style="display:flex;flex-wrap:wrap;gap:16px 48px;align-items:flex-end;justify-content:space-between"><div style="display:flex;flex-direction:column;gap:12px;max-width:640px"><h2 style="margin:0;font-size:clamp(34px,4vw,44px)">{{ t.homeTeamTitle }}</h2></div><a class="btn btn-primary" href="#/tim" onClick="{{ goTeam }}" style="color:var(--color-bg);font-size:15px;padding:10px 20px;border-radius:999px;white-space:nowrap">{{ t.aboutUs }} →</a></div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 56px">
           <sc-for list="{{ teamPreview }}" as="m" hint-placeholder-count="2">
-            <a href="#/tim" onClick="{{ goTeam }}" style="display:flex;gap:24px;align-items:stretch;text-decoration:none;color:var(--color-text)">
-              <figure style="margin:0;flex:none;width:clamp(120px,15vw,180px);overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="height:100%;min-height:160px"><image-slot id="team-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
-              <div style="display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:4px 0">
-                <span style="font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">{{ m.title }}</span>
+            <a href="#/tim" onClick="{{ goTeam }}" style="display:flex;gap:24px;align-items:flex-start;text-decoration:none;color:var(--color-text)">
+              <figure style="margin:0;flex:none;width:clamp(120px,15vw,180px);aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="width:100%;height:100%"><image-slot id="home-tim-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
+              <div style="display:flex;flex-direction:column;justify-content:center;gap:6px;padding:2px 0">
+                <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">{{ m.title }}</span>
                 <span style="font-size:clamp(21px,2vw,27px);font-weight:600;line-height:1.15">{{ m.name }}</span>
-                <p style="margin:6px 0 0;font-size:16px;line-height:1.5;color:var(--color-neutral-800);max-width:42ch">{{ m.line }}</p>
-                <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
-                  <sc-for list="{{ m.stats }}" as="st" hint-placeholder-count="2"><span style="display:flex;gap:8px;align-items:center;font-size:16px;color:var(--color-neutral-800)"><i class="ph-duotone ph-paw-print" style="font-size:18px;color:var(--color-accent);flex:none"></i>{{ st }}</span></sc-for>
+                <p style="margin:6px 0 2px;font-size:16px;line-height:1.5;color:var(--color-neutral-800);max-width:42ch">{{ m.line }}</p>
+                <div style="display:flex;flex-direction:column;gap:7px;margin-top:4px">
+                  <sc-for list="{{ m.stats }}" as="st" hint-placeholder-count="2"><span style="display:flex;gap:9px;align-items:center;font-size:15px;color:var(--color-neutral-800)"><i class="ph-duotone ph-paw-print" style="font-size:18px;color:var(--color-accent);flex:none"></i>{{ st }}</span></sc-for>
                 </div>
               </div>
             </a>
@@ -231,8 +235,8 @@
       <section style="max-width:1600px;margin:0 auto;padding:48px clamp(20px,5vw,72px) 88px;display:flex;flex-direction:column;gap:72px">
         <div style="display:flex;flex-direction:column;gap:16px;max-width:720px"><h1 style="margin:0;font-size:clamp(44px,6vw,72px);line-height:1.08;letter-spacing:-0.025em;color:var(--color-accent-900)">{{ t.teamTitle }}</h1><p style="margin:0;font-size:19px;line-height:1.6;color:var(--color-neutral-800)">{{ t.teamLead }}</p></div>
         <sc-for list="{{ team }}" as="m" hint-placeholder-count="2">
-          <article style="display:flex;flex-wrap:wrap;gap:32px 56px;align-items:stretch">
-            <figure style="margin:0;flex:0 0 clamp(170px,22vw,260px);overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="height:100%;min-height:230px"><image-slot id="team-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
+          <article style="display:flex;flex-wrap:wrap;gap:32px 56px;align-items:flex-start">
+            <figure style="margin:0;flex:0 0 clamp(170px,22vw,260px);aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)"><div style="width:100%;height:100%"><image-slot id="team-{{ m.id }}" shape="rect" fit="cover" src="{{ m.img }}" placeholder="Portret"></image-slot></div></figure>
             <div style="flex:1 1 360px;display:flex;flex-direction:column;justify-content:center;gap:14px">
               <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700);line-height:1">{{ m.role }}</span>
               <h2 style="margin:0;font-size:clamp(30px,3.5vw,40px);line-height:1.15">{{ m.name }}</h2>
@@ -367,12 +371,8 @@
     </div>
   </footer>
 
-  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;gap:8px;padding:10px 12px;background:var(--color-bg);box-shadow:var(--shadow-lg)">
-      <a class="btn btn-primary" href="{{ c.tel1 }}" style="flex:1;color:var(--color-bg);font-size:16px;padding:12px"><i class="ph-duotone ph-phone" style="font-size:20px"></i>{{ t.call }}</a>
-      <a class="btn btn-secondary" href="{{ c.viber }}" style="font-size:16px;padding:12px;text-decoration:none"><i class="ph-duotone ph-chat-circle-dots" style="font-size:20px"></i></a>
-      <a class="btn btn-secondary" href="{{ c.whatsapp }}" style="font-size:16px;padding:12px;text-decoration:none"><i class="ph-duotone ph-whatsapp-logo" style="font-size:20px"></i></a>
-    </div>
+  <sc-if value="{{ never }}" hint-placeholder-val="{{ false }}">
+    <div style="display:none"></div>
   </sc-if>
 </div>
 </x-dc>
@@ -470,7 +470,7 @@ class Component extends DCLogic {
             en: ["Doctor of veterinary medicine and member of the Vet Princess team. She graduated in Belgrade in 2019 and completed her specialisation in surgery in 2025.", "She keeps expanding her knowledge through training and congresses. Every visit begins by listening carefully to the owner, with clear communication about the pet's condition and care."],
             ru: ["Доктор ветеринарной медицины и член команды Vet Princess. Окончила факультет в Белграде в 2019 году, специализацию по хирургии — в 2025.", "Постоянно расширяет знания на обучениях и конгрессах. Каждый осмотр начинает с внимательного выслушивания владельца и понятно объясняет состояние и лечение питомца."] }
         })[m.id][L];
-        return { id: m.id, img: m.img, ...m[L], bio: bs };
+        return { id: m.id, img: m.img, ar: m.id === "galja" ? "608 / 760" : "760 / 754", ...m[L], bio: bs };
       }),
       teamPreview: C.team.map(m => {
         const d = ({
@@ -481,12 +481,12 @@ class Component extends DCLogic {
             line: { sr: "Svaki pregled počinje tako što pažljivo sasluša vlasnika i njegovog ljubimca.", en: "Every visit begins with her listening carefully to the owner and their pet.", ru: "Каждый осмотр начинается с того, что она внимательно выслушивает владельца и питомца." },
             stats: { sr: ["7+ godina iskustva", "Strpljiv pristup svakom pacijentu"], en: ["7+ years of experience", "A patient approach to every patient"], ru: ["Опыт 7+ лет", "Терпеливый подход к каждому пациенту"] } }
         })[m.id];
-        return { id: m.id, img: m.img, title: d.title[L], name: d.name[L], line: d.line[L], stats: d.stats[L] };
+        return { id: m.id, img: m.img, ar: m.id === "galja" ? "608 / 760" : "760 / 754", title: d.title[L], name: d.name[L], line: d.line[L], stats: d.stats[L] };
       }),
       langs: ["sr", "en", "ru"].map(code => ({ label: code.toUpperCase(), onClick: () => { localStorage.setItem("vp-lang", code); this.setState({ lang: code }); },
         style: { font: "inherit", fontSize: 13, fontWeight: 600, letterSpacing: "0.04em", cursor: "pointer", border: 0, borderRadius: 999, padding: "4px 10px", minWidth: 36, background: code === L ? "var(--color-accent-2-700)" : "transparent", color: code === L ? "var(--color-bg)" : "var(--color-accent-2-800)" } })),
       trail: Array.from({ length: 18 }, (_, i) => ({ style: { position: "absolute", left: i * 66, top: i % 2 ? 4 : 34, fontSize: 28, color: "var(--color-accent)", transform: "rotate(90deg)", opacity: 0.3 + 0.7 * (i + 1) / 18 } })),
-      narrow, wide: !narrow, showMenu: narrow && this.state.menu, toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      narrow, wide: !narrow, narrowHome: narrow && isHome, showMenu: narrow && isHome && this.state.menu, toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
       goHome: this.go(""), goServices: this.go("usluge"), goTeam: this.go("tim"), goBlog: this.go("saveti"), goGallery: this.go("pacijenti"),
       faqItems: t.faq.slice(0, 4).map((q, i) => { const open = this.state.faqOpen === i; return { ...q, open, sign: open ? "−" : "+",
         toggle: () => this.setState({ faqOpen: open ? null : i }),
